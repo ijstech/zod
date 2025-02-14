@@ -1,5 +1,6 @@
 // rollup.config.js
 import typescript from "@rollup/plugin-typescript";
+import dts from "rollup-plugin-dts";
 
 export default [
   {
@@ -25,5 +26,11 @@ export default [
         sourceMap: false,
       }),
     ],
+  },
+  {
+    // Bundle TypeScript Declarations (.d.ts)
+    input: "lib/index.d.ts",
+    output: [{ file: "types/bundle.d.ts", format: "es" }],
+    plugins: [dts()],
   },
 ];
